@@ -26,10 +26,23 @@ const App = () => {
 
 //Delete job
 const deleteJob = async (id) => {
-  const res = await fetch(`${API}/jobs/${id}`,{
-    method:'DELETE',
-  })
-  return;
+  try {
+    const res = await fetch(`${API}/jobs/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (!res.ok) {
+      const text = await res.text();
+      console.error("Delete failed:", text);
+      throw new Error("Failed to delete job");
+    }
+
+    const data = await res.json(); // { success: true }
+    return data;
+  } catch (error) {
+    console.error("Error deleting job:", error);
+    throw error;
+  }
 };
 
 //Update job

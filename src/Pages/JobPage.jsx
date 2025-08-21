@@ -1,6 +1,4 @@
-// import { useState, useEffect } from "react";
 import { useParams, useLoaderData,Link, useNavigate } from "react-router-dom";
-// import Spinner from "../components/Spinner";
 import { FaArrowLeft, FaMapMarker } from "react-icons/fa";
 import { toast } from "react-toastify";
 
@@ -8,26 +6,6 @@ import { toast } from "react-toastify";
 const JobPage = ({deleteJob}) => {
   const { id } = useParams();
   const job = useLoaderData();
-  // console.log(job);
-
-  // const [job,setJob] = useState(null);
-  // const[loading,setLoading]= useState(true) ;
-
-  // useEffect(()=> {
-  //     const fetchJob = async() => {
-  //         try{
-  //             const res = await fetch(`/api/jobs/${id}`)
-  //             const data = await res.json();
-  //             setJob(data);
-
-  //         }catch(error){
-  //             console.log('Fetch Error', error)
-  //         }finally{
-  //             setLoading(false);
-  //         }
-  //     }
-  //     fetchJob();
-  // }, [] )
   const navigate = useNavigate();
 
   const onDeleteCLick = (jobID) => {
